@@ -3,7 +3,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://movie-api-amy-d13640458d52.herokuapp.com/';
 
 
 //Declaring the api url that will provide data for the client app
@@ -175,18 +175,15 @@ public userLogin(userDetails:any): Observable<any> {
   }
 
   
-private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-    console.error('Some error occurred:', error.error.message);
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 422) {
+      console.error('Validation error:', JSON.stringify(error.error));
     } else {
-    console.error(
-        `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
+      console.error('Unexpected error:', error);
     }
     return throwError(() => new Error('Something bad happened; please try again later.'));
-
   }
-
+  
  
 }
 

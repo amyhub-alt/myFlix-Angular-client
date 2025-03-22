@@ -18,5 +18,6 @@ openUserRegistrationDialog(): void {
 // Assigning the dialog a width
     width: '280px'
     });
+    
   }
 }
