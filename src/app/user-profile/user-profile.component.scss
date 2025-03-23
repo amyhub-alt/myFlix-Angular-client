@@ -1,0 +1,16 @@
+.profile-container {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+  }
+  
+  .favorites-section mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
