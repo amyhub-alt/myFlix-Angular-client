@@ -37,7 +37,15 @@
             >
                 Synopsis
             </button>
-            <mat-icon>favorite_border</mat-icon>
+            <mat-icon
+                matTooltip="Toggle Favorite"
+                (click)="toggleFavorite(movie._id)"
+                [style.color]="isFavorite(movie._id) ? 'red' : ''"
+                style="cursor: pointer;"
+                >
+                {{ isFavorite(movie._id) ? 'favorite' : 'favorite_border' }}
+                </mat-icon>
+
         </mat-card-actions>
     </mat-card>
 </div>
