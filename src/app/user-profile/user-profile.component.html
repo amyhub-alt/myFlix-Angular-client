@@ -23,7 +23,7 @@
             <input matInput type="date" [(ngModel)]="formattedBirthday" name="birthday" />
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit">
+          <button mat-raised-button color="primary" style="margin-left: 10px; margin-bottom: 10px;" type="submit">
             Save Changes
           </button>
         </form>
@@ -34,9 +34,12 @@
         <button mat-raised-button color="primary" (click)="backToMovies()" style="margin-right: 10px;">
               ← Back to Movies
             </button>
-        
+            <button mat-raised-button color="warn" (click)="deleteUser()" style="margin-right: 10px;">
+              Delete Account
+            </button>
+            
     
-        <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        <button mat-raised-button color="warn" style="background-color: #C8C8C8; color: white;" (click)="logout()">Logout</button>
       </mat-card-actions>
     </mat-card>
   
@@ -44,7 +47,8 @@
     <h3 style="margin-top: 20px;">Your Favorite Movies</h3>
   
     <div style="display: flex; flex-wrap: wrap; gap: 20px;" *ngIf="favoriteMovies.length > 0">
-      <mat-card *ngFor="let movie of favoriteMovies" style="flex: 1 1 300px;">
+      <mat-card class="favorite-movie-card" *ngFor="let movie of favoriteMovies">
+
         <mat-card-header>
           <mat-card-title>{{ movie.Title }}</mat-card-title>
           <mat-card-subtitle>Directed by: {{ movie.Director.Name }}</mat-card-subtitle>

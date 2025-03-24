@@ -109,6 +109,38 @@ export class UserProfileComponent implements OnInit {
     }
   });
 }
+
+deleteUser(): void {
+  const confirmed = window.confirm(
+    'Are you sure you want to delete your account? This action cannot be undone.'
+  );
+
+  if (confirmed) {
+    this.fetchApiData.deleteUser(this.userData.Username).subscribe({
+      next: () => {
+        this.snackBar.open('Account deleted. Goodbye! 😢', 'Close', { duration: 3000 });
+        localStorage.clear();
+        this.router.navigate(['welcome']);
+      },
+      error: (err) => {
+        if (err?.fakeSuccess) {
+          // Handle the fake success case we manually triggered
+          console.warn('Handled 200 plain text as success:', err.message);
+          this.snackBar.open('Account deleted. Goodbye! 😢', 'Close', { duration: 3000 });
+          localStorage.clear();
+          this.router.navigate(['welcome']);
+        } else {
+          console.error('Error deleting account:', err);
+          this.snackBar.open('Something went wrong. Please try again.', 'Close', { duration: 3000 });
+        }
+      }
+    });
+  }
+}
+
+
+
+
 }
   
   

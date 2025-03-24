@@ -177,13 +177,21 @@ public userLogin(userDetails:any): Observable<any> {
     return body || { };
   }
 
-  
   private handleError(error: HttpErrorResponse): Observable<never> {
+    if (error.status === 200 && typeof error.error === 'string') {
+      // Treat plain text 200 as a success, not an error
+      return throwError(() => ({
+        fakeSuccess: true,
+        message: 'Delete success with plain text response'
+      }));
+    }
+  
     if (error.status === 422) {
       console.error('Validation error:', JSON.stringify(error.error));
     } else {
       console.error('Unexpected error:', error);
     }
+  
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   
