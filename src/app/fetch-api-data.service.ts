@@ -65,7 +65,8 @@ public userLogin(userDetails:any): Observable<any> {
     // Get Director Info
     public getDirector(directorName: string): Observable<any> {
       const token = localStorage.getItem('token');
-      return this.http.get<any>(`${apiUrl}directors/${directorName}`, {
+      const encodedName = encodeURIComponent(directorName);
+      return this.http.get<any>(`${apiUrl}movies/director/${encodedName}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token
         })
@@ -74,12 +75,13 @@ public userLogin(userDetails:any): Observable<any> {
         catchError(this.handleError)
       );
     }
-  
+    
 
   // Get Genre Info
   public getGenre(genreName: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get<any>(`${apiUrl}genres/${genreName}`, {
+    const encodedName = encodeURIComponent(genreName);
+    return this.http.get<any>(`${apiUrl}genre/${encodedName}`, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token
       })
@@ -88,6 +90,7 @@ public userLogin(userDetails:any): Observable<any> {
       catchError(this.handleError)
     );
   }
+  
 
   // Get User Info
   public getUser(username: string): Observable<any> {

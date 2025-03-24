@@ -1,0 +1,28 @@
+<mat-dialog-content>
+    <h2>{{ movie.Title }}</h2>
+  
+    <!-- Genre Section -->
+    <div *ngIf="section === 'genre' && genreDetails">
+      <h3>Genre: {{ genreDetails.Genre }}</h3>
+      <p>{{ genreDetails.Description }}</p>
+    </div>
+  
+    <!-- Director Section -->
+    <div *ngIf="section === 'director' && directorDetails">
+      <h3>Director: {{ directorDetails.name }}</h3>
+      <p>{{ directorDetails.bio }}</p>
+      <p><strong>Birth Year:</strong> {{ directorDetails.birth }}</p>
+      <p *ngIf="directorDetails.death && directorDetails.death !== 'Present'">
+        <strong>Death Year:</strong> {{ directorDetails.death }}
+      </p>
+    </div>
+  
+    <!-- Synopsis/Details Section -->
+    <div *ngIf="section === 'details'">
+      <h3>Synopsis</h3>
+      <p>{{ movie.Description }}</p>
+    </div>
+  
+    <button mat-button (click)="closeDialog()">Close</button>
+  </mat-dialog-content>
+  

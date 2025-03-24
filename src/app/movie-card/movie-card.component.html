@@ -1,8 +1,10 @@
 <!-- Top-right Profile Button -->
 <div style="display: flex; justify-content: flex-start; margin: 10px;">
-    <button mat-raised-button color="accent" (click)="goToProfile()">
+    <button style="margin-right: 10px;" mat-raised-button color="accent" (click)="goToProfile()">
       My Profile
     </button>
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+
   </div>
   
   <!-- Movie Cards -->
@@ -16,18 +18,21 @@
         <mat-card-actions>
             <button
                 mat-button
+                (click)="openDialog(movie, 'genre')"
                 color="primary"
             >
                 Genre
             </button>
             <button
                 mat-button
+                (click)="openDialog(movie, 'director')"
                 color="primary"
             >
                 Director
             </button>
             <button
                 mat-button
+                (click)="openDialog(movie, 'details')"
                 color="primary"
             >
                 Synopsis
