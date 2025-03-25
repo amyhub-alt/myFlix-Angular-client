@@ -8,44 +8,28 @@
   </div>
   
   <!-- Movie Cards -->
-  <div style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
-        <mat-card-header>
-        <mat-card-title>{{movie.Title}}</mat-card-title>
-            <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
-        </mat-card-header>
-        <img src={{movie.ImagePath}} alt= {{movie.Title}} />
-        <mat-card-actions>
-            <button
-                mat-button
-                (click)="openDialog(movie, 'genre')"
-                color="primary"
-            >
-                Genre
-            </button>
-            <button
-                mat-button
-                (click)="openDialog(movie, 'director')"
-                color="primary"
-            >
-                Director
-            </button>
-            <button
-                mat-button
-                (click)="openDialog(movie, 'details')"
-                color="primary"
-            >
-                Synopsis
-            </button>
-            <mat-icon
-                matTooltip="Toggle Favorite"
-                (click)="toggleFavorite(movie._id)"
-                [style.color]="isFavorite(movie._id) ? 'red' : ''"
-                style="cursor: pointer;"
-                >
-                {{ isFavorite(movie._id) ? 'favorite' : 'favorite_border' }}
-                </mat-icon>
-
-        </mat-card-actions>
+  <!-- Movie Cards (Horizontal Scroll) -->
+<div class="movie-scroll-container">
+    <mat-card *ngFor="let movie of movies" class="movie-card">
+      <mat-card-header>
+        <mat-card-title>{{ movie.Title }}</mat-card-title>
+        <mat-card-subtitle>Directed by: {{ movie.Director.Name }}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <img mat-card-image [src]="movie.ImagePath" [alt]="movie.Title" />
+      
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="openDialog(movie, 'genre')">Genre</button>
+        <button mat-button color="primary" (click)="openDialog(movie, 'director')">Director</button>
+        <button mat-button color="primary" (click)="openDialog(movie, 'details')">Synopsis</button>
+        <mat-icon
+          (click)="toggleFavorite(movie._id)"
+          [style.color]="isFavorite(movie._id) ? 'red' : ''"
+          style="cursor: pointer;"
+        >
+          {{ isFavorite(movie._id) ? 'favorite' : 'favorite_border' }}
+        </mat-icon>
+      </mat-card-actions>
     </mat-card>
-</div>
+  </div>
+  

@@ -1,0 +1,31 @@
+.movie-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .movie-card {
+    min-width: 250px;
+    max-width: 250px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .movie-card img {
+    height: 375px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  mat-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
