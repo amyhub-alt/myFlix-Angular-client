@@ -15,14 +15,21 @@
 .update-profile-card {
   margin-top: 20px;
   margin-left: 10px;
-  padding: 16px;
+  max-width: 500px;
+  padding: 20px;
   background-color: #f7f7f7;
   border-radius: 8px;
+  width: 100%;
+}
+
+.update-profile-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .full-width {
   width: 100%;
-  margin-bottom: 12px;
 }
 
 .form-buttons {
