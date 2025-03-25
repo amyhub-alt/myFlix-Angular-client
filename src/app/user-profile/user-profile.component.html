@@ -1,71 +1,75 @@
 <div class="profile-container" *ngIf="userData.Username">
-    <!-- User Info -->
-    <mat-card class="user-info-card">
-      <h2>  Welcome, {{ userData.Username }}</h2>
-      <p><strong>  Email:</strong> {{ userData.Email }}</p>
-      <p><strong>Birthday:</strong> {{ formattedBirthday }}</p>
-      <mat-card class="update-profile-card">
-        <h3>Update Your Profile</h3>
-      
-        <form #updateForm="ngForm" (ngSubmit)="updateUser()">
-          <mat-form-field class="full-width">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="userData.Username" name="username" required />
-          </mat-form-field>
-      
-          <mat-form-field class="full-width">
-            <mat-label>Email</mat-label>
-            <input matInput type="email" [(ngModel)]="userData.Email" name="email" required />
-          </mat-form-field>
-      
-          <mat-form-field class="full-width">
-            <mat-label>Birthday</mat-label>
-            <input matInput type="date" [(ngModel)]="formattedBirthday" name="birthday" />
-          </mat-form-field>
 
-          <button mat-raised-button color="primary" style="margin-left: 10px; margin-bottom: 10px;" type="submit">
+  <!-- User Info -->
+  <mat-card class="user-info-card">
+    <h2 class="welcome-heading">Welcome, {{ userData.Username }}</h2>
+
+    <div class="profile-info">
+      <p><strong>Email:</strong> {{ userData.Email }}</p>
+      <p><strong>Birthday:</strong> {{ formattedBirthday }}</p>
+    </div>
+
+    <!-- Update Profile Form -->
+    <mat-card class="update-profile-card">
+      <h3>Update Your Profile</h3>
+
+      <form #updateForm="ngForm" (ngSubmit)="updateUser()">
+        <mat-form-field class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="userData.Username" name="username" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="userData.Email" name="email" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Birthday</mat-label>
+          <input matInput type="date" [(ngModel)]="formattedBirthday" name="birthday" />
+        </mat-form-field>
+
+        <div class="form-buttons">
+          <button mat-raised-button color="primary" type="submit">
             Save Changes
           </button>
-        </form>
-      </mat-card>
-      
+        </div>
+      </form>
+    </mat-card>
+
+    <!-- Profile Actions -->
+    <mat-card-actions class="action-buttons">
+      <button mat-raised-button color="primary" (click)="updateUser()">Update Profile</button>
+      <button mat-raised-button color="primary" (click)="backToMovies()">← Back to Movies</button>
+      <button mat-raised-button color="warn" (click)="deleteUser()">Delete Account</button>
+      <button mat-raised-button style="background-color: #C8C8C8; color: white;" (click)="logout()">Logout</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Favorite Movies -->
+  <h3 style="margin-top: 20px;">Your Favorite Movies</h3>
+
+  <div class="favorite-movies-container" *ngIf="favoriteMovies.length > 0">
+    <mat-card class="favorite-movie-card" *ngFor="let movie of favoriteMovies">
+      <mat-card-header>
+        <mat-card-title class="movie-title" [matTooltip]="movie.Title">
+          {{ movie.Title }}
+        </mat-card-title>
+        <mat-card-subtitle>Directed by: {{ movie.Director.Name }}</mat-card-subtitle>
+      </mat-card-header>
+  
+      <img mat-card-image [src]="movie.ImagePath" [alt]="movie.Title" />
+  
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="updateUser()" style="margin-right: 10px;">Update Profile</button>
-        <button mat-raised-button color="primary" (click)="backToMovies()" style="margin-right: 10px;">
-              ← Back to Movies
-            </button>
-            <button mat-raised-button color="warn" (click)="deleteUser()" style="margin-right: 10px;">
-              Delete Account
-            </button>
-            
-    
-        <button mat-raised-button color="warn" style="background-color: #C8C8C8; color: white;" (click)="logout()">Logout</button>
+        <button mat-button color="warn" (click)="removeFromFavorite(movie._id)">
+          Remove from Favorites
+        </button>
       </mat-card-actions>
     </mat-card>
-  
-    <!-- Favorite Movies -->
-    <h3 style="margin-top: 20px;">Your Favorite Movies</h3>
-  
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;" *ngIf="favoriteMovies.length > 0">
-      <mat-card class="favorite-movie-card" *ngFor="let movie of favoriteMovies">
-
-        <mat-card-header>
-          <mat-card-title>{{ movie.Title }}</mat-card-title>
-          <mat-card-subtitle>Directed by: {{ movie.Director.Name }}</mat-card-subtitle>
-        </mat-card-header>
-  
-        <img mat-card-image [src]="movie.ImagePath" [alt]="movie.Title" />
-  
-        <mat-card-actions>
-          <button mat-button color="warn" (click)="removeFromFavorite(movie._id)">
-            Remove from Favorites
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  
-    <div *ngIf="favoriteMovies.length === 0">
-      <p>You haven't added any favorite movies yet.</p>
-    </div>
   </div>
   
+
+  <div *ngIf="favoriteMovies.length === 0">
+    <p>You haven't added any favorite movies yet.</p>
+  </div>
+</div>
