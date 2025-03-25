@@ -1,7 +1,7 @@
 <div class="profile-container" *ngIf="userData.Username">
 
   <!-- User Info -->
-  <mat-card class="user-info-card">
+  <mat-card  class="user-info-card">
     <h2 class="welcome-heading">Welcome, {{ userData.Username }}</h2>
 
     <div class="profile-info">
@@ -11,7 +11,7 @@
 
     <!-- Update Profile Form -->
     <mat-card class="update-profile-card">
-      <h3>Update Your Profile</h3>
+      <h3>Update Your Profile:</h3>
 
       <form #updateForm="ngForm" (ngSubmit)="updateUser()">
         <mat-form-field class="full-width">
@@ -47,7 +47,7 @@
   </mat-card>
 
   <!-- Favorite Movies -->
-  <h3 style="margin-top: 20px;">Your Favorite Movies</h3>
+  <h3 style="margin-top: 20px; margin-left: 40px;" >Your Favorite Movies:</h3>
 
   <div class="favorite-movies-container" *ngIf="favoriteMovies.length > 0">
     <mat-card class="favorite-movie-card" *ngFor="let movie of favoriteMovies">
