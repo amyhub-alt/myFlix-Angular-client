@@ -1,59 +1,101 @@
-# MyFlixAngularClient
+# myFlix-Angular Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+##  Overview
 
-## Development server
+The **myFlix-Angular** app is the client-side for a movie web application built using **Angular** and powered by an existing server-side REST API. This single-page, responsive app allows movie enthusiasts to browse information about movies, directors, and genres, as well as manage their personal profiles and favorite movies.
 
-To start a local development server, run:
+---
+
+##  Objective
+
+Build the client-side interface for the **myFlix** movie app using **Angular**, integrating with a previously built REST API. The app demonstrates essential Angular concepts and best practices, including routing, services, Angular Material design, form handling, and documentation with Typedoc and JSDoc.
+
+---
+
+##  Technologies Used
+
+- Angular (v9+)
+- Angular Material
+- TypeDoc
+- JSDoc
+- Node.js
+- npm
+- GitHub Pages (for deployment)
+
+---
+
+##  Key Features
+
+- **User Registration & Login**
+- **Movie List View** (Displays all movies after login)
+- **Movie Details View** (Detailed view for each movie)
+- **Genre View** (View genre information)
+- **Director View** (View director information)
+- **User Profile View**
+  - Update user information
+  - Add/remove favorite movies
+  - Delete user account
+- Responsive design for mobile and desktop users
+
+---
+
+##  User Stories
+
+- As a user, I want to **register**, **log in**, and **update my profile** so I can manage my movie preferences.
+- As a user, I want to be able to **see information about movies, directors, and genres** so I can learn more about movies I’ve watched or want to watch.
+- As a user, I want to be able to **save my favorite movies** to easily revisit them later.
+
+---
+
+##  Technical Requirements
+
+- Angular (v9 or later)
+- Node.js and npm (latest versions)
+- Angular Material for UI components
+- TypeDoc comments in Angular codebase
+- JSDoc documentation in backend API
+- Hosted on GitHub Pages
+
+---
+
+##  Project Structure
+
+src/ ├── app/ │ ├── components/ │ │ ├── movie-card/ │ │ ├── user-profile/ │ │ ├── welcome-page/ │ │ └── dialog-content/ │ ├── services/ │ ├── app-routing.module.ts │ └── app.module.ts ├── assets/ ├── environments/
+
+yaml
+Copy
+Edit
+
+---
+
+##  Deployment
+
+This project is hosted on **GitHub Pages** and is accessible via your portfolio or direct link.
+
+---
+
+##  Project Setup
+
+To install and run the app locally:
+
+---
+
+##  To build for production
+
+ng build --base-href "https://amyhub-alt.github.io/myFlix-Angular-client/"
+
+
+---
+##  To deploy to Githib Pages:
+
+ng deploy --base-href=/myFlix-Angular-client/
+
+
+---
+
+
 
 ```bash
+npm install
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
